@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Stop Information</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to CSS for styling -->
+</head>
+<body>
+    <header>
+        <h1>Smart Bus Stop</h1>
+        <nav>
+            <ul>
+                <li><a href="#schedule">Bus Schedule</a></li>
+                <li><a href="#arrival">Next Bus Arrival</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="schedule">
+        <h2>Bus Schedule</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Bus Route</th>
+                    <th>Departure Time</th>
+                    <th>Arrival Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Route 1</td>
+                    <td>08:00 AM</td>
+                    <td>08:15 AM</td>
+                </tr>
+                <tr>
+                    <td>Route 2</td>
+                    <td>09:00 AM</td>
+                    <td>09:20 AM</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="arrival">
+        <h2>Next Bus Arrival</h2>
+        <p>Next bus (Route 1) will arrive in <span id="countdown">10 minutes</span>.</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Smart Bus Stop</p>
+    </footer>
+
+    <script src="script.js"></script> <!-- Link to JavaScript file for dynamic behavior -->
+</body>
+</html>
