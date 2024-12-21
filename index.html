@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bus Service Information</title>
+
+    <!-- Add the CSS here -->
     <style>
         /* General Reset */
         * {
@@ -39,17 +41,28 @@
             margin: 0 auto;
         }
 
+        /* Flex container for routes */
+        .route-container {
+            display: flex;
+            justify-content: space-between; /* Distribute items evenly */
+            flex-wrap: wrap; /* Allow wrapping for smaller screens */
+            gap: 20px; /* Space between the routes */
+        }
+
+        /* Individual Route Style */
         .route {
             background-color: white;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
             padding: 20px;
+            width: 30%; /* Three items per row */
+            min-width: 250px; /* Ensure it doesn't shrink too small */
+            box-sizing: border-box;
         }
 
         .route h2 {
             color: #00796b;
-            font-size: 28px;
+            font-size: 24px;
             margin-bottom: 10px;
         }
 
@@ -106,38 +119,41 @@
         }
     </style>
 </head>
+
 <body>
     <header>
         <h1>Bus Service Information</h1>
     </header>
 
     <main>
-        <section class="route">
-            <h2>Route 1: Megenagna to Tulu Dimtu</h2>
-            <p><strong>Departure Time:</strong> 4:00 AM</p>
-            <p><strong>Arrival Time:</strong> 2:00 PM</p>
-            <p><strong>Bus No:</strong> 103</p>
-            <button class="btn" onclick="checkAvailability('103')">Check Availability</button>
-            <p id="status-103" class="status"></p>
-        </section>
+        <section class="route-container">
+            <section class="route">
+                <h2>Route 1: Megenagna to Tulu Dimtu</h2>
+                <p><strong>Departure Time:</strong> 4:00 AM</p>
+                <p><strong>Arrival Time:</strong> 2:00 PM</p>
+                <p><strong>Bus No:</strong> 103</p>
+                <button class="btn" onclick="checkAvailability('103')">Check Availability</button>
+                <p id="status-103" class="status"></p>
+            </section>
 
-        <section class="route">
-            <h2>Route 2: 4 Killo to Bole</h2>
-            <p><strong>Departure Time:</strong> 4:00 AM</p>
-            <p><strong>Arrival Time:</strong> 2:00 PM</p>
-            <p><strong>Bus No:</strong> 104</p>
-            <p class="garage-notice">Note: Bus No. 104 will be in the garage on Wednesday, March 23, 2024</p>
-            <button class="btn" onclick="checkAvailability('104')">Check Availability</button>
-            <p id="status-104" class="status"></p>
-        </section>
+            <section class="route">
+                <h2>Route 2: 4 Killo to Bole</h2>
+                <p><strong>Departure Time:</strong> 4:00 AM</p>
+                <p><strong>Arrival Time:</strong> 2:00 PM</p>
+                <p><strong>Bus No:</strong> 104</p>
+                <p class="garage-notice">Note: Bus No. 104 will be in the garage on Wednesday, March 23, 2024</p>
+                <button class="btn" onclick="checkAvailability('104')">Check Availability</button>
+                <p id="status-104" class="status"></p>
+            </section>
 
-        <section class="route">
-            <h2>Route 3: Piyasa to Mexico</h2>
-            <p><strong>Departure Time:</strong> 4:00 AM</p>
-            <p><strong>Arrival Time:</strong> 2:00 PM</p>
-            <p><strong>Bus No:</strong> 105</p>
-            <button class="btn" onclick="checkAvailability('105')">Check Availability</button>
-            <p id="status-105" class="status"></p>
+            <section class="route">
+                <h2>Route 3: Piyasa to Mexico</h2>
+                <p><strong>Departure Time:</strong> 4:00 AM</p>
+                <p><strong>Arrival Time:</strong> 2:00 PM</p>
+                <p><strong>Bus No:</strong> 105</p>
+                <button class="btn" onclick="checkAvailability('105')">Check Availability</button>
+                <p id="status-105" class="status"></p>
+            </section>
         </section>
 
         <section>
@@ -150,36 +166,32 @@
         <p>&copy; 2024 Bus Service. All rights reserved.</p>
     </footer>
 
+    <!-- Add JavaScript here -->
     <script>
-        // Set current time on the page
-        function updateTime() {
-            const now = new Date();
-            const hours = now.getHours();
-            const minutes = now.getMinutes();
-            const formattedTime = `${hours}:${minutes < 10 ? '0' + minutes : minutes}`;
-            document.getElementById('current-time').innerText = `Current Time: ${formattedTime}`;
-        }
+        function checkAvailability(busNumber) {
+            const currentDate = new Date();
+            const currentDay = currentDate.getDay(); // Sunday - Saturday : 0 - 6
+            const currentDateString = currentDate.toISOString().split('T')[0]; // YYYY-MM-DD
 
-        // Update time every minute
-        setInterval(updateTime, 60000);
-        updateTime();
-
-        // Function to check availability of bus
-        function checkAvailability(busNo) {
-            const date = new Date();
-            const day = date.getDate();
-            const month = date.getMonth() + 1; // Months are 0-indexed, so adding 1
-            const year = date.getFullYear();
-
-            // Specific condition for Bus 104
-            if (busNo === '104' && day === 23 && month === 3 && year === 2024) {
-                document.getElementById(`status-${busNo}`).innerText = "This bus is in the garage today.";
-                document.getElementById(`status-${busNo}`).style.color = 'red';
+            let statusMessage = '';
+            if (busNumber === '104' && currentDateString === '2024-03-23') {
+                statusMessage = 'This bus is in the garage today.';
             } else {
-                document.getElementById(`status-${busNo}`).innerText = "This bus is available.";
-                document.getElementById(`status-${busNo}`).style.color = 'green';
+                statusMessage = 'This bus is available.';
             }
+
+            // Show the status message in the corresponding paragraph
+            document.getElementById(`status-${busNumber}`).innerText = statusMessage;
         }
+
+        function displayCurrentTime() {
+            const currentDate = new Date();
+            const timeString = currentDate.toLocaleTimeString();
+            document.getElementById('current-time').innerText = `Current Time: ${timeString}`;
+        }
+
+        // Update current time every second
+        setInterval(displayCurrentTime, 1000);
     </script>
 </body>
 </html>
