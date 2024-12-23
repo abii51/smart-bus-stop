@@ -34,19 +34,38 @@
             font-size: 36px;
         }
 
-        /* Main Content Styles */
+        /* Main Container Styles */
         main {
-            padding: 40px;
+            display: flex; /* Flexbox to arrange map and info side by side */
             max-width: 1000px;
             margin: 0 auto;
+            padding: 40px;
+            gap: 20px;
+        }
+
+        /* Map Styles */
+        .map-container {
+            flex: 1; /* Map will take up one part of the space */
+        }
+
+        .map-container img {
+            width: 100%; /* Make the map image responsive */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Bus Information Container */
+        .info-container {
+            flex: 1; /* Info takes up another part of the space */
+            display: flex;
+            flex-direction: column;
         }
 
         /* Flex container for routes */
         .route-container {
             display: flex;
-            justify-content: space-between; /* Distribute items evenly */
-            flex-wrap: wrap; /* Allow wrapping for smaller screens */
-            gap: 20px; /* Space between the routes */
+            flex-direction: column; /* Stack the route cards vertically */
+            gap: 20px;
         }
 
         /* Individual Route Style */
@@ -55,8 +74,6 @@
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             padding: 20px;
-            width: 30%; /* Three items per row */
-            min-width: 250px; /* Ensure it doesn't shrink too small */
             box-sizing: border-box;
         }
 
@@ -117,6 +134,11 @@
         .status {
             font-weight: bold;
         }
+
+        /* Current Time Section */
+        .time-section {
+            margin-top: 20px;
+        }
     </style>
 </head>
 
@@ -126,39 +148,47 @@
     </header>
 
     <main>
-        <section class="route-container">
-            <section class="route">
-                <h2>Route 1: Megenagna to Tulu Dimtu</h2>
-                <p><strong>Departure Time:</strong> 4:00 AM</p>
-                <p><strong>Arrival Time:</strong> 2:00 PM</p>
-                <p><strong>Bus No:</strong> 103</p>
-                <button class="btn" onclick="checkAvailability('103')">Check Availability</button>
-                <p id="status-103" class="status"></p>
-            </section>
-
-            <section class="route">
-                <h2>Route 2: 4 Killo to Bole</h2>
-                <p><strong>Departure Time:</strong> 4:00 AM</p>
-                <p><strong>Arrival Time:</strong> 2:00 PM</p>
-                <p><strong>Bus No:</strong> 104</p>
-                <p class="garage-notice">Note: Bus No. 104 will be in the garage on Wednesday, March 23, 2024</p>
-                <button class="btn" onclick="checkAvailability('104')">Check Availability</button>
-                <p id="status-104" class="status"></p>
-            </section>
-
-            <section class="route">
-                <h2>Route 3: Piyasa to Mexico</h2>
-                <p><strong>Departure Time:</strong> 4:00 AM</p>
-                <p><strong>Arrival Time:</strong> 2:00 PM</p>
-                <p><strong>Bus No:</strong> 105</p>
-                <button class="btn" onclick="checkAvailability('105')">Check Availability</button>
-                <p id="status-105" class="status"></p>
-            </section>
+        <!-- Map Section -->
+        <section class="map-container">
+            <img src="your-map-image.jpg" alt="Map showing bus routes">
         </section>
 
-        <section>
-            <h2>Current Time</h2>
-            <p id="current-time"></p>
+        <!-- Information Section -->
+        <section class="info-container">
+            <section class="route-container">
+                <section class="route">
+                    <h2>Route 1: Megenagna to Tulu Dimtu</h2>
+                    <p><strong>Departure Time:</strong> 4:00 AM</p>
+                    <p><strong>Arrival Time:</strong> 2:00 PM</p>
+                    <p><strong>Bus No:</strong> 103</p>
+                    <button class="btn" onclick="checkAvailability('103')">Check Availability</button>
+                    <p id="status-103" class="status"></p>
+                </section>
+
+                <section class="route">
+                    <h2>Route 2: 4 Killo to Bole</h2>
+                    <p><strong>Departure Time:</strong> 4:00 AM</p>
+                    <p><strong>Arrival Time:</strong> 2:00 PM</p>
+                    <p><strong>Bus No:</strong> 104</p>
+                    <p class="garage-notice">Note: Bus No. 104 will be in the garage on Wednesday, March 23, 2024</p>
+                    <button class="btn" onclick="checkAvailability('104')">Check Availability</button>
+                    <p id="status-104" class="status"></p>
+                </section>
+
+                <section class="route">
+                    <h2>Route 3: Piyasa to Mexico</h2>
+                    <p><strong>Departure Time:</strong> 4:00 AM</p>
+                    <p><strong>Arrival Time:</strong> 2:00 PM</p>
+                    <p><strong>Bus No:</strong> 105</p>
+                    <button class="btn" onclick="checkAvailability('105')">Check Availability</button>
+                    <p id="status-105" class="status"></p>
+                </section>
+            </section>
+
+            <section class="time-section">
+                <h2>Current Time</h2>
+                <p id="current-time"></p>
+            </section>
         </section>
     </main>
 
@@ -170,7 +200,6 @@
     <script>
         function checkAvailability(busNumber) {
             const currentDate = new Date();
-            const currentDay = currentDate.getDay(); // Sunday - Saturday : 0 - 6
             const currentDateString = currentDate.toISOString().split('T')[0]; // YYYY-MM-DD
 
             let statusMessage = '';
@@ -180,7 +209,6 @@
                 statusMessage = 'This bus is available.';
             }
 
-            // Show the status message in the corresponding paragraph
             document.getElementById(`status-${busNumber}`).innerText = statusMessage;
         }
 
