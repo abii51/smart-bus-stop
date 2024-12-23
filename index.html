@@ -16,43 +16,51 @@
 
     <!-- Main content starts -->
     <div class="content-container">
-        <!-- Left: Map Container -->
-        <div class="map-container">
-            <!-- Replace with correct image path -->
-            <img src="https://raw.githubusercontent.com/abii51/smart-bus-stop/main/6001108269852116280.jpg" alt="Map showing bus routes" width="300px">
-        </div>
-
-        <!-- Right: Bus Routes Information -->
+        <!-- Left: Bus Routes Information -->
         <section class="route-container">
-            <div class="route">
+            <section class="route">
                 <h2>Route 1: Megenagna to Tulu Dimtu</h2>
                 <p><strong>Departure Time:</strong> 4:00 AM</p>
                 <p><strong>Arrival Time:</strong> 2:00 PM</p>
                 <p><strong>Bus No:</strong> 103</p>
-            </div>
+                <button class="btn" onclick="checkAvailability('103')">Check Availability</button>
+                <p id="status-103" class="status"></p>
+            </section>
 
-            <div class="route">
+            <section class="route">
                 <h2>Route 2: 4 Killo to Bole</h2>
                 <p><strong>Departure Time:</strong> 4:00 AM</p>
                 <p><strong>Arrival Time:</strong> 2:00 PM</p>
                 <p><strong>Bus No:</strong> 104</p>
-            </div>
+                <p class="garage-notice">Note: Bus No. 104 will be in the garage on Wednesday, March 23, 2024</p>
+                <button class="btn" onclick="checkAvailability('104')">Check Availability</button>
+                <p id="status-104" class="status"></p>
+            </section>
 
-            <div class="route">
+            <section class="route">
                 <h2>Route 3: Piyasa to Mexico</h2>
                 <p><strong>Departure Time:</strong> 4:00 AM</p>
                 <p><strong>Arrival Time:</strong> 2:00 PM</p>
                 <p><strong>Bus No:</strong> 105</p>
-            </div>
+                <button class="btn" onclick="checkAvailability('105')">Check Availability</button>
+                <p id="status-105" class="status"></p>
+            </section>
 
-            <!-- New route: Mexico to Kality -->
-            <div class="route">
+            <section class="route">
                 <h2>Route 4: Mexico to Kality</h2>
-                <p><strong>Departure Time:</strong> 8:00 AM</p>
-                <p><strong>Arrival Time:</strong> 9:00 AM</p>
+                <p><strong>Departure Time:</strong> 6:00 AM</p>
+                <p><strong>Arrival Time:</strong> 3:00 PM</p>
                 <p><strong>Bus No:</strong> 106</p>
-            </div>
+                <button class="btn" onclick="checkAvailability('106')">Check Availability</button>
+                <p id="status-106" class="status"></p>
+            </section>
         </section>
+
+        <!-- Right: Map Container -->
+        <div class="map-container">
+            <!-- Replace with correct image path -->
+           <img src="https://raw.githubusercontent.com/abii51/smart-bus-stop/main/6001108269852116280.jpg" alt="Map showing bus routes" width="300px">
+        </div>
     </div>
     <!-- Main content ends -->
 
