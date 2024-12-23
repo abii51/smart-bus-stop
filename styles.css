@@ -47,7 +47,7 @@ header h1 {
 }
 
 .map-container img {
-    max-width: 100%;
+    max-width: 200px;
     height: auto;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -98,7 +98,7 @@ footer {
     padding: 10px;
     width: 100%;
     position: fixed; /* Fixes the footer at the bottom */
-    bottom: 0; /* Ensures it's at the bottom of the page */
+    bottom: 20px; /* Ensures it's at the bottom of the page */
     left: 0; /* Ensures it spans the full width of the page */
     z-index: 1000; /* Makes sure the footer stays on top of other elements */
 }
