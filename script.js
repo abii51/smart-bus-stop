@@ -3,7 +3,7 @@ var busSchedule = {
     '103': { date: '2024-03-22', statusMessage: 'This bus is available.' },
     '104': { date: '2024-03-23', statusMessage: 'This bus is unavailable.' },
     '105': { date: '2024-03-24', statusMessage: 'This bus is available.' },
-    '106': { date: '2024-03-25', statusMessage: 'This bus is available.' }
+    '106': { date: '2024-03-25', statusMessage: 'This bus is available.' },
 };
 
 // Function to check the availability of a bus
