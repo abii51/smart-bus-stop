@@ -1,173 +1,124 @@
-/* styles.css */
-
-/* General Styles */
-body {
-    font-family: Arial, sans-serif;
-    background-image: url('https://via.placeholder.com/1500'); /* Replace with your own image */
-    background-size: cover;
-    background-position: center;
-    color: #333;
+/* General Reset */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.6;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    height: auto;
-    justify-content: flex-start;
-    overflow-y: auto;  /* Enable vertical scrolling */
 }
 
-/* Header */
+/* Header Styles */
 header {
-    background-color: rgba(44, 62, 80, 0.8); 
+    background-color: #00796b;
     color: white;
-    padding: 20px;
     text-align: center;
-}
-
-header nav ul {
-    list-style: none;
-    padding: 0;
-}
-
-header nav ul li {
-    display: inline;
-    margin: 0 15px;
-}
-
-header nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease, transform 0.3s ease;
-}
-
-header nav ul li a:hover {
-    color: #f39c12;
-    transform: scale(1.1);
-}
-
-/* Main Content */
-section {
     padding: 20px;
-    margin: 20px;
-    background-color: rgba(255, 255, 255, 0.9); 
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+    font-size: 36px;
+}
+
+/* Main Flex Layout */
+.content-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Left Side (Map Image) */
+.map-container {
+    flex: 1;
+    margin-right: 40px;
+}
+
+.map-container img {
+    max-width: 100%;
+    height: auto;
     border-radius: 8px;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeIn 1s forwards; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Animation for fade-in */
-@keyframes fadeIn {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* Right Side (Bus Information) */
+.route-container {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
-/* Table Styling */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+/* Individual Route Style */
+.route {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    box-sizing: border-box;
 }
 
-table th, table td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
+.route h2 {
+    color: #00796b;
+    font-size: 24px;
+    margin-bottom: 10px;
 }
 
-table th {
-    background-color: #2c3e50;
-    color: white;
+.route p {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.route p strong {
     font-weight: bold;
+    color: #00796b;
 }
 
-table tr:hover {
-    background-color: #ecf0f1;
-    transition: background-color 0.3s ease;
+/* Garage Notice */
+.garage-notice {
+    background-color: #ffebee;
+    color: #d32f2f;
+    padding: 12px;
+    border-radius: 6px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 15px;
 }
 
-table td, table th {
-    opacity: 0;
-    animation: fadeIn 1s forwards;
-}
-
-table tr:nth-child(1) td, table tr:nth-child(1) th {
-    animation-delay: 0.2s;
-}
-table tr:nth-child(2) td, table tr:nth-child(2) th {
-    animation-delay: 0.4s;
-}
-table tr:nth-child(3) td, table tr:nth-child(3) th {
-    animation-delay: 0.6s;
-}
-
-/* Footer */
+/* Footer Styles */
 footer {
+    background-color: #00796b;
+    color: white;
     text-align: center;
     padding: 10px;
-    background-color: #2c3e50;
-    color: white;
     width: 100%;
-    font-size: 14px;
-    position: relative;  /* Changed to relative for proper footer behavior */
 }
 
-/* Responsive Design */
-@media screen and (max-width: 768px) {
-    body {
-        padding: 10px;
-    }
-
-    header {
-        font-size: 18px;
-    }
-
-    h1 {
-        font-size: 24px;
-    }
-
-    h2 {
-        font-size: 20px;
-    }
-
-    table {
-        font-size: 14px;
-        width: 100%;
-    }
-
-    table th, table td {
-        padding: 10px;
-    }
-
-    header nav ul li {
-        display: block;
-        margin-bottom: 10px;
-        text-align: center;
-    }
-
-    footer {
-        font-size: 12px;
-    }
+/* Interactive Button Styles */
+.btn {
+    background-color: #00796b;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
 }
 
-@media screen and (max-width: 480px) {
-    h1 {
-        font-size: 20px;
-    }
+.btn:hover {
+    background-color: #004d40;
+}
 
-    h2 {
-        font-size: 18px;
-    }
-
-    table {
-        font-size: 12px;
-    }
-
-    table th, table td {
-        padding: 8px;
-    }
+.status {
+    font-weight: bold;
 }
