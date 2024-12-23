@@ -47,8 +47,8 @@ header h1 {
 }
 
 .map-container img {
-    max-width: 200px;
-    height: auto;
+    max-width: 600px;
+    height: 600;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: block; /* Ensure the image aligns left */
