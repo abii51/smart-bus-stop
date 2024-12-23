@@ -10,15 +10,16 @@ function checkAvailability(busNumber) {
     var currentDate = new Date();
     var currentDateString = currentDate.toISOString().split('T')[0]; // YYYY-MM-DD
 
-    // Check if the bus exists in the schedule
+    console.log('Checking availability for bus number: ' + busNumber);
+    console.log('Current date: ' + currentDateString);
+
     if (busSchedule[busNumber]) {
         var bus = busSchedule[busNumber];
-
-        // Check if the bus is available or not on the current date
         var statusMessage = bus.date === currentDateString ? bus.statusMessage : 'This bus is available.';
+        console.log('Status message: ' + statusMessage);
+
         document.getElementById('status-' + busNumber).innerText = statusMessage;
     } else {
-        // Error handling for invalid bus number
         document.getElementById('status-' + busNumber).innerText = 'Invalid bus number.';
     }
 }
