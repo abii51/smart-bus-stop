@@ -42,18 +42,19 @@ header h1 {
 
 /* Right Side (Map Image) */
 .map-container {
-    flex: 1;
-    margin-left: 40px; /* Add space between the image and the bus routes */
+    flex: 1; /* Allow this container to grow and take remaining space */
+    display: flex;
+    justify-content: center; /* Center the image inside its container */
+    align-items: center; /* Vertically center the image */
 }
 
 .map-container img {
-    max-width: 100%;
-    height: auto;
+    max-width: 100%; /* Ensure the image doesn’t exceed the container's width */
+    height: auto; /* Maintain the image's aspect ratio */
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    display: block;
-    margin-left: 0;
-    width: 400px; /* Increase the size of the image */
+}
+
 }
 
 /* Left Side (Bus Information) */
