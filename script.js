@@ -1,21 +1,14 @@
-// script.js
-let countdownElement = document.getElementById("countdown");
+function checkAvailability(busNumber) {
+    const currentDate = new Date();
+    const currentDateString = currentDate.toISOString().split('T')[0]; // YYYY-MM-DD
 
-// Mock countdown timer for demo (you can replace this with real-time data later)
-let countdownTime = 10; // Start with 10 minutes
-
-// Function to update the countdown
-function updateCountdown() {
-    if (countdownTime > 0) {
-        countdownElement.textContent = `${countdownTime} minutes`;
-        countdownTime--;
+    let statusMessage = '';
+    if (busNumber === '104' && currentDateString === '2024-03-23') {
+        statusMessage = 'This bus is in the garage today.';
     } else {
-        countdownElement.textContent = "Arriving now!";
+        statusMessage = 'This bus is available.';
     }
+
+    document.getElementById(`status-${busNumber}`).innerText = statusMessage;
 }
 
-// Update countdown every minute (60,000 ms)
-setInterval(updateCountdown, 60000);
-
-// Initial update
-updateCountdown();
