@@ -36,7 +36,7 @@ header h1 {
     justify-content: flex-start; /* Align the content to the left */
     padding: 40px;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 20;
 }
 
 /* Left Side (Map Image) */
